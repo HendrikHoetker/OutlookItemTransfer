@@ -82,4 +82,3 @@ I do not provide any warranty to the code. It is only tested under limited condi
 * https://de.switch-case.com/52136961
 * https://www.delphipraxis.net/172132-outlook-attachments-einem-tstream.html
 * https://github.com/eclipse/eclipse.platform.swt/blob/master/bundles/org.eclipse.swt/Eclipse%20SWT%20PI/win32/org/eclipse/swt/internal/ole/win32/IStorage.java
-* 
