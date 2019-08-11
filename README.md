@@ -23,8 +23,11 @@ Both dependencies must be added to your project, too.
 			
 	  if (OutlookItemTransfer.getInstance().isSupportedType(event.currentDataType)) {
 		  Object o = OutlookItemTransfer.getInstance().nativeToJava(event.currentDataType);
-		  if (o != null && o instanceof List) {
-			  //...
+		  if (o != null && o instanceof OutlookMessage[]) {
+		  	OutlookMessage[] outlookMessages = (OutlookMessage[])o;
+			for (OutlookMessage msg: outlookMessages) {
+				//...
+			}
 		  }
 	  }
 
@@ -40,7 +43,7 @@ OutlookItemTransfer provides the Drag implementation (only dragging from Outlook
 
 The OutlookItemTransfer can be used as any other SWT Transfer class.
 
-The method nativeToJava will return a List of OutlookItem: List<OutlookItem>. Each item represents one dragged item from Outlook.
+The method nativeToJava will return an Array of OutlookItem: OutlookItem[]. Each item represents one dragged item from Outlook.
 	
 The method javaToNative is not implemented as dropping to Outlook is not considered in my use cases.
   
