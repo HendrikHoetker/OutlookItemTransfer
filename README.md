@@ -69,6 +69,7 @@ All source code files are provided under MIT License, see LICENSE.md.
 I do not provide any warranty to the code. It is only tested under limited conditions for my own use cases.
 
 ## Resources
+The following resources helped me to understand the whole story. Some provide pieces of code I then use in my implementation.
 * https://stackoverflow.com/questions/7690236/can-i-drag-items-from-outlook-into-my-swt-application
 * https://en.wikipedia.org/wiki/Component_Object_Model
 * https://docs.microsoft.com/en-us/windows/win32/api/objidl/nn-objidl-istorage
@@ -82,3 +83,9 @@ I do not provide any warranty to the code. It is only tested under limited condi
 * https://de.switch-case.com/52136961
 * https://www.delphipraxis.net/172132-outlook-attachments-einem-tstream.html
 * https://github.com/eclipse/eclipse.platform.swt/blob/master/bundles/org.eclipse.swt/Eclipse%20SWT%20PI/win32/org/eclipse/swt/internal/ole/win32/IStorage.java
+
+## Versions
+* Version 1.0 - initial release
+
+# Your Motivation
+It would be great to have an open contribution. If you find issues and room for further improvements in my implementation please feel free to provide bug fixes or further improvements.
