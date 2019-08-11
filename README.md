@@ -21,12 +21,12 @@ The implementation relies on Apache Commons (StringUtils) and Apache POI Library
 
 ### Usage
 			
-  if (OutlookItemTransfer.getInstance().isSupportedType(event.currentDataType)) {
-      Object o = OutlookItemTransfer.getInstance().nativeToJava(event.currentDataType);
-      if (o != null && o instanceof List) {
-          //...
-      }
-  }
+	  if (OutlookItemTransfer.getInstance().isSupportedType(event.currentDataType)) {
+		  Object o = OutlookItemTransfer.getInstance().nativeToJava(event.currentDataType);
+		  if (o != null && o instanceof List) {
+			  //...
+		  }
+	  }
 
 
 ### Validation
