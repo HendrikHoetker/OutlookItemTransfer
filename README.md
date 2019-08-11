@@ -7,11 +7,11 @@ I wanted a small library to be used same as other Transfers in Java SWT (like Fi
 Target was not to provide the dragged outlook item as byte array.
 
 ## License
-All source code files are provided under MIT License.
+All source code files are provided under MIT License, see LICENSE.md.
+I do not provide any warranty to the code. It is only tested under limited conditions for my own use cases.
 
 ## Description
 I provide all code required for implementing Drag'n Drop from Outlook to an Eclipse SWT application using the SWT drag'n drop processes.
-
 
 ## Dependencies to other libraries
 The implementation relies on Apache Commons (StringUtils) and Apache POI Library. Both dependencies must be added to your project, too.
@@ -26,4 +26,18 @@ The implementation is validated on
 * Eclipse 2019.3 Java EE
 
 ### OutlookItemTransfer
-OutlookItemTransfer provides the Drag implementation (only dragging from Outlook, but not dropping to Outlook is implemented)
+OutlookItemTransfer provides the Drag implementation (only dragging from Outlook, but not dropping to Outlook is implemented). The Transfer class is subclassed to Transfer, not ByteArrayTransfer. The behaviour is very similar to the ByteArrayTransfer, but it considers some small modifications compared to the ByteArrayTransfer.
+
+The OutlookItemTransfer can be used as any other SWT Transfer class.
+
+The method nativeToJava will return a List of OutlookItem: List<OutlookItem>. Each item represents one dragged item from Outlook.
+  
+ ### OutlookItem
+ The OutlookItem is representing one single item dragged from Outlook. The OutlookItem provides
+ * the filename to the file (as given by outlook)
+ * a byte[] to the contents of the file dragged from Outlook.
+ 
+ ### Internals
+ The dragged item from outlook is provided as IStorage object. IStorage is similar to a file system directory containing further IStorage objects (sub directories) as well as IStream objects representing files.
+ The internal structure is called CompoundObject where an IStorage is represented by an CompoundStorage, an IStream by an CompoundStream. Hint: I added a CompoundRoot to indicate the file system's root directory. Outlook provides an IStorage as root object.
+ 
