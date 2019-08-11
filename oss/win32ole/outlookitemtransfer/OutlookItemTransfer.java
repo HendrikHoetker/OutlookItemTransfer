@@ -110,7 +110,7 @@ public class OutlookItemTransfer extends Transfer {
 	 * not implemented as drag to outlook is not considered
 	 */
 	@Override
-	protected void javaToNative(Object arg0, TransferData arg1) {
+	public void javaToNative(Object arg0, TransferData arg1) {
 	}
 	
 	
