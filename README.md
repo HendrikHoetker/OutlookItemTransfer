@@ -19,6 +19,16 @@ The implementation relies on Apache Commons (StringUtils) and Apache POI Library
 
 ## Implementation
 
+### Usage
+			
+      if (OutlookItemTransfer.getInstance().isSupportedType(event.currentDataType)) {
+				Object o = OutlookItemTransfer.getInstance().nativeToJava(event.currentDataType);
+			
+				if (o != null && o instanceof List) {
+        }
+      }
+
+
 ### Validation
 The implementation is validated on
 * Windows 10
