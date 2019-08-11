@@ -32,12 +32,23 @@ The OutlookItemTransfer can be used as any other SWT Transfer class.
 
 The method nativeToJava will return a List of OutlookItem: List<OutlookItem>. Each item represents one dragged item from Outlook.
   
- ### OutlookItem
- The OutlookItem is representing one single item dragged from Outlook. The OutlookItem provides
- * the filename to the file (as given by outlook)
- * a byte[] to the contents of the file dragged from Outlook.
+### OutlookItem
+The OutlookItem is representing one single item dragged from Outlook. The OutlookItem provides
+* the filename to the file (as given by outlook)
+* a byte[] to the contents of the file dragged from Outlook.
  
- ### Internals
- The dragged item from outlook is provided as IStorage object. IStorage is similar to a file system directory containing further IStorage objects (sub directories) as well as IStream objects representing files.
- The internal structure is called CompoundObject where an IStorage is represented by an CompoundStorage, an IStream by an CompoundStream. Hint: I added a CompoundRoot to indicate the file system's root directory. Outlook provides an IStorage as root object.
+### Internals
+The dragged item from outlook is provided as IStorage object. IStorage is similar to a file system directory containing further IStorage objects (sub directories) as well as IStream objects representing files.
  
+The internal structure is called CompoundObject where an IStorage is represented by an CompoundStorage, an IStream by an CompoundStream. Hint: I added a CompoundRoot to indicate the file system's root directory. Outlook provides an IStorage as root object.
+ 
+Outlook provides a virtual file system of IStorages and IStreams which are 1:1 represented in a tree of CompoundStorage and CompoundStreams.
+
+The data of the IStream is extracted and stored at each CompoundStream object.
+
+The .MSG file is nothing else than a binary dump of the virtual file system plus some header informations. This is the same also for other Office files (.XLS, .DOC, etc.).
+
+The resulting virtual file system is actually written using the Apache POI library and the byte stream is extracted.
+
+In the end the implementation could be simplified by removing the Compound* objects and directly writing the information to the Apache POI library. Intention was here to have a 1:1 representation of the dragged object in memory for further analyzes. One could use CompoundRoot.toString() to dump the initially provided IStorage data to a String.
+
