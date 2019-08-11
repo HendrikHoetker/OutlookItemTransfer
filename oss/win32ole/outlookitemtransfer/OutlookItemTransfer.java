@@ -182,7 +182,7 @@ public class OutlookItemTransfer extends Transfer {
 		// close the IDataObject
 		dataObject.Release();
 		
-		return draggedMessages;
+		return draggedMessages.toArray();
 	}
 	
 	
