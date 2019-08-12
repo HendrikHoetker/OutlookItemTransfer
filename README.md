@@ -36,7 +36,7 @@ Both dependencies must be added to your project, too.
 The implementation is validated on
 * Windows 10
 * Outlook Professional 2016
-* Eclipse 2019.3 Java EE
+* Eclipse 2019.06 Java EE
 
 ### OutlookItemTransfer
 OutlookItemTransfer provides the Drag implementation (only dragging from Outlook, but not dropping to Outlook is implemented). The Transfer class is subclassed to Transfer, not ByteArrayTransfer. The behaviour is very similar to the ByteArrayTransfer, but it considers some small modifications compared to the ByteArrayTransfer.
