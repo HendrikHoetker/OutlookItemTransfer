@@ -21,15 +21,18 @@ Both dependencies must be added to your project, too.
 
 ### Usage
 			
-	  if (OutlookItemTransfer.getInstance().isSupportedType(event.currentDataType)) {
-		  Object o = OutlookItemTransfer.getInstance().nativeToJava(event.currentDataType);
-		  if (o != null && o instanceof OutlookMessage[]) {
-		  	OutlookMessage[] outlookMessages = (OutlookMessage[])o;
-			for (OutlookMessage msg: outlookMessages) {
-				//...
+	if (OutlookItemTransfer.getInstance().isSupportedType(event.currentDataType)) {
+		Object o = OutlookItemTransfer.getInstance().nativeToJava(event.currentDataType);
+		if (o != null && o instanceof Object[]) {
+		Object[] objectArray = (Object[])o;
+			for (Object objItem: objectArray) {
+				if (objItem instanceof OutlookMessage) {
+					OutlookMessage msg = (OutlookMessage)objItem;
+					//...
+				}
 			}
-		  }
-	  }
+		}
+	}
 
 
 ### Validation
