@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.codec.binary.StringUtils;
+import org.eclipse.swt.dnd.Transfer;
 import org.eclipse.swt.dnd.TransferData;
 import org.eclipse.swt.internal.ole.win32.COM;
 import org.eclipse.swt.internal.ole.win32.FORMATETC;
@@ -11,7 +12,7 @@ import org.eclipse.swt.internal.ole.win32.IDataObject;
 import org.eclipse.swt.internal.ole.win32.STGMEDIUM;
 import org.eclipse.swt.internal.win32.OS;
 
-public class OutlookItemTransferImpl extends OutlookItemTransfer {
+public class OutlookItemTransfer extends Transfer {
 	
 	// additional constants needed, not provided by the COM interface
 	private final int TYMED_ISTREAM = 4;
@@ -25,11 +26,11 @@ public class OutlookItemTransferImpl extends OutlookItemTransfer {
 	/**
 	 * singleton of the transfer
 	 */
-	private OutlookItemTransferImpl() {}
-	private static OutlookItemTransferImpl instance = null;
-	public static OutlookItemTransferImpl getInstance() {
+	private OutlookItemTransfer() {}
+	private static OutlookItemTransfer instance = null;
+	public static OutlookItemTransfer getInstance() {
 		if (instance == null) {
-			instance = new OutlookItemTransferImpl();
+			instance = new OutlookItemTransfer();
 		}
 
 		return instance;
