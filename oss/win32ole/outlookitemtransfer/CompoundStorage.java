@@ -69,30 +69,34 @@ class CompoundStorage extends CompoundContainer {
 				// depending on type of object
 				switch (statstg.type) {
 					case COM.STGTY_STREAM: {	// load an IStream (=File)
-						long[] pIStream = new long[1];
-						
-						// get the pointer to the IStream
-						if (storage.OpenStream(name, 0, COM.STGM_DIRECT | COM.STGM_READ | COM.STGM_SHARE_EXCLUSIVE, 0, pIStream) == COM.S_OK) {
-							// load the IStream
-							CompoundStream stream = CompoundStream.createFromStream(name, pIStream[0]);
-							if (stream != null) {
-								parent.addSubElement(stream);
+						try {
+							long[] pIStream = new long[1];
+							
+							// get the pointer to the IStream
+							if (storage.OpenStream(name, 0, COM.STGM_DIRECT | COM.STGM_READ | COM.STGM_SHARE_EXCLUSIVE, 0, pIStream) == COM.S_OK) {
+								// load the IStream
+								CompoundStream stream = CompoundStream.createFromStream(name, pIStream[0]);
+								if (stream != null) {
+									parent.addSubElement(stream);
+								}
 							}
-						}
+						} catch (Exception e) {}
 					}
+					break;
 					
 					case COM.STGTY_STORAGE: {	// load an IStorage (=SubDirectory)
-						CompoundStorage subStorage = new CompoundStorage(name);
-						
-						// get the pointer to the sub IStorage
-						long[] pSubIStorage = new long[1];
-						if (storage.OpenStorage(name, 0, COM.STGM_DIRECT | COM.STGM_READ | COM.STGM_SHARE_EXCLUSIVE, null, 0, pSubIStorage) == COM.S_OK) {
-							// recursively walk through the sub storage
-							readOutlookStorage(subStorage, pSubIStorage[0]);
-							parent.addSubElement(subStorage);
-						}
-						
+						try {
+							long[] pSubIStorage = new long[1];
+							
+							// get the pointer to the sub IStorage
+							if (storage.OpenStorage(name, 0, COM.STGM_DIRECT | COM.STGM_READ | COM.STGM_SHARE_EXCLUSIVE, null, 0, pSubIStorage) == COM.S_OK) {
+								// recursively walk through the sub storage
+								CompoundStorage subStorage = new CompoundStorage(name);
+								parent.addSubElement(subStorage);
+							}
+						} catch (Exception e) {}
 					}
+					break;
 				}
 			}
 			
