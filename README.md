@@ -89,6 +89,7 @@ The following resources helped me to understand the whole story. Some provide pi
 * https://de.switch-case.com/52136961
 * https://www.delphipraxis.net/172132-outlook-attachments-einem-tstream.html
 * https://github.com/eclipse/eclipse.platform.swt/blob/master/bundles/org.eclipse.swt/Eclipse%20SWT%20PI/win32/org/eclipse/swt/internal/ole/win32/IStorage.java
+* https://www.mitec.cz/ssv.html (Open and analyze MS Office Documents)
 
 ## Versions
 * Version 1.0 - initial release
