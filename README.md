@@ -100,6 +100,7 @@ The following resources helped me to understand the whole story. Some provide pi
 ## Versions
 * Version 1.0 - initial release
 * Version 1.0.1 - bugfixing: switch/case missed break commands in method CompoundStorage.readOutlookStorage()
+* Version 1.1 - bugfixing: missed recursion in IStorage leading to broken files, new feature: handles outlook attachments as well
 
 # Your Motivation
 It would be great to have an open contribution. If you find issues and room for further improvements in my implementation please feel free to provide bug fixes or further improvements.
