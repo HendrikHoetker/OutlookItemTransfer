@@ -4,17 +4,17 @@ class CompoundFactory {
 	
 	
 	/**
-	 * creates a root object containing one stream
+	 * returns a CompoundStream object based on an IStream
+	 * @param pIStream
+	 * @return
 	 */
-	static CompoundRoot createFromIStream(long pIStream) {
-		CompoundRoot root = new CompoundRoot();
-		
+	static CompoundStream createFromIStream(long pIStream) {
 		CompoundStream stream = CompoundStream.createFromStream("unknown", pIStream);
 		if (stream != null) {
-			root.addSubElement(stream);
+			return stream;
 		}
 		
-		return root;
+		return null;
 	}
 	
 	

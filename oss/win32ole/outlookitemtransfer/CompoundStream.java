@@ -99,7 +99,7 @@ class CompoundStream extends CompoundObject {
 	/**
 	 * get the binary data earlier read from the IStream
 	 */
-	byte[] getData() {
+	public byte[] getData() {
 		return this.data;
 	}
 	

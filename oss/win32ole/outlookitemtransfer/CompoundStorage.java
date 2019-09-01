@@ -65,7 +65,7 @@ class CompoundStorage extends CompoundContainer {
 				
 				// get the name of the object found
 				String name = readPWCSName(statstg);
-				
+
 				// depending on type of object
 				switch (statstg.type) {
 					case COM.STGTY_STREAM: {	// load an IStream (=File)
@@ -90,9 +90,13 @@ class CompoundStorage extends CompoundContainer {
 							
 							// get the pointer to the sub IStorage
 							if (storage.OpenStorage(name, 0, COM.STGM_DIRECT | COM.STGM_READ | COM.STGM_SHARE_EXCLUSIVE, null, 0, pSubIStorage) == COM.S_OK) {
+								
 								// recursively walk through the sub storage
 								CompoundStorage subStorage = new CompoundStorage(name);
 								parent.addSubElement(subStorage);
+								
+								// recursive call to this function for sub storage
+								readOutlookStorage(subStorage, pSubIStorage[0]);
 							}
 						} catch (Exception e) {}
 					}
