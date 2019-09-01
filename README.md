@@ -21,18 +21,24 @@ Both dependencies must be added to your project, too.
 
 ### Usage
 			
-	if (OutlookItemTransfer.getInstance().isSupportedType(event.currentDataType)) {
-		Object o = OutlookItemTransfer.getInstance().nativeToJava(event.currentDataType);
+	// check for outlook drop item
+	if (DragAndDropTransfer.get.getOutlookItemTransfer().isSupportedType(event.currentDataType)) {
+		Object o = DragAndDropTransfer.get.getOutlookItemTransfer().nativeToJava(event.currentDataType);
 		if (o != null && o instanceof Object[]) {
-		Object[] objectArray = (Object[])o;
+			Object[] objectArray = (Object[])o;
 			for (Object objItem: objectArray) {
 				if (objItem instanceof OutlookMessage) {
 					OutlookMessage msg = (OutlookMessage)objItem;
-					//...
+					
+					// ...
+					// Filename in: msg.getFilename()
+					// Binary data in: msg.getFileContents()
+					// ...
 				}
 			}
 		}
 	}
+
 
 
 ### Validation
